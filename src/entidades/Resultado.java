@@ -8,25 +8,28 @@ public class Resultado {
 	
 	private Integer ID;
 	private Date Data;
+	private Teste TipoTeste;
+	private LoteMateriaPrima LoteMateriaPrima;
 	private Float Nota;
-	private StatusQualidade Status;
+	private StatusQualidade Aprovacao;
 	
 	public Resultado() {
+		
 	}
 
-	public Resultado(Integer iD, Date data, Float nota, StatusQualidade status) {
-		setID(iD);
+	public Resultado(Integer id, Date data, Float nota, StatusQualidade aprovacao) {
+		setID(id);
 		setData(data);
 		setNota(nota);
-		setStatus(status);
+		setStatus(aprovacao);
 	}
 
 	public Integer getID() {
 		return ID;
 	}
 
-	public void setID(Integer iD) {
-		ID = iD;
+	public void setID(Integer id) {
+		ID = id;
 	}
 
 	public Date getData() {
@@ -46,11 +49,11 @@ public class Resultado {
 	}
 
 	public StatusQualidade getStatus() {
-		return Status;
+		return Aprovacao;
 	}
 
-	public void setStatus(StatusQualidade status) {
-		Status = status;
+	public void setStatus(StatusQualidade aprovacao) {
+		Aprovacao = aprovacao;
 	}
 	
 	

@@ -3,33 +3,35 @@ package entidades;
 public class Venda {
 	
 	private Integer ID;
-	private Integer Quantidade;
+	private Integer QuantidadeKG;
 	private Float Valor;
+	//private Estoque Estoque;
+	//private Compra Compra;
 	
 	public Venda() {
 		
 	}
 
-	public Venda(Integer iD, Integer quantidade, Float valor) {
+	public Venda(Integer iD, Integer quantidadeKg, Float valor) {
 		setID(iD);
-		setQuantidade(quantidade);
+		setQuantidade(quantidadeKg);
 		setValor(valor);
 	}
 
-	public Integer getQuantidade() {
-		return Quantidade;
+	public Integer getQuantidadeKg() {
+		return QuantidadeKG;
 	}
 
-	public void setQuantidade(Integer quantidade) {
-		Quantidade = quantidade;
+	public void setQuantidade(Integer quantidadeKg) {
+		QuantidadeKG = quantidadeKg;
 	}
 
 	public Integer getID() {
 		return ID;
 	}
 
-	public void setID(Integer iD) {
-		ID = iD;
+	public void setID(Integer id) {
+		ID = id;
 	}
 
 	public Float getValor() {
@@ -39,9 +41,6 @@ public class Venda {
 	public void setValor(Float valor) {
 		Valor = valor;
 	}
-	
-	
-	
-	
+		
 
 }

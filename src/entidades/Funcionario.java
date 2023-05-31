@@ -4,31 +4,32 @@ package entidades;
 public class Funcionario {
 	
 	private Integer ID;
+	private char[] CPF = new char[11];
+	private char[] NIT = new char[11];
 	private String Nome;
 	private Integer Telefone;
-	private Integer Enderco;
-	private Integer CPF;
-	private Integer NIT;
-	
+	private Integer Endereco;
+	//private String Setor;
 	
 	public Funcionario() {
+		
 	}
 
-	public Funcionario(Integer iD, String nome, Integer telefone, Integer enderco, Integer cPF, Integer nIT) {
-		this.setID(iD);
+	public Funcionario(Integer id, String nome, Integer telefone, Integer endereco, char[] cpf, char[] nit) {
+		this.setID(id);
 		this.setNome(nome);
 		this.setTelefone(telefone);
-		this.setEnderco(enderco);
-		this.setCPF(cPF);
-		this.setNIT(nIT);
+		this.setEnderco(endereco);
+		this.setCPF(cpf);
+		this.setNIT(nit);
 	}
 
 	public Integer getID() {
 		return ID;
 	}
 
-	public void setID(Integer iD) {
-		ID = iD;
+	public void setID(Integer id) {
+		ID = id;
 	}
 
 	public String getNome() {
@@ -47,31 +48,28 @@ public class Funcionario {
 		Telefone = telefone;
 	}
 
-	public Integer getEnderco() {
-		return Enderco;
+	public Integer getEndereco() {
+		return Endereco;
 	}
 
-	public void setEnderco(Integer enderco) {
-		Enderco = enderco;
+	public void setEnderco(Integer endereco) {
+		Endereco = endereco;
 	}
 
-	public Integer getCPF() {
+	public char[] getCPF() {
 		return CPF;
 	}
 
-	public void setCPF(Integer cPF) {
-		CPF = cPF;
+	public void setCPF(char[] cpf) {
+		CPF = cpf;
 	}
 
-	public Integer getNIT() {
+	public char[] getNIT() {
 		return NIT;
 	}
 
-	public void setNIT(Integer nIT) {
-		NIT = nIT;
+	public void setNIT(char[] nit) {
+		NIT = nit;
 	}
 	
-	
-	
-
 }

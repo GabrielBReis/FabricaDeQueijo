@@ -1,8 +1,10 @@
 package Enumeracao;
 
 public enum FormaDePagamento {
-	DINHEIRO,
-	CARTAOCREDITO,
-	CARTAODEBITO
+	ESPECIE,
+	PIX,
+	TRANSFERENCIA,
+	CREDITO,
+	DEBITO
 
 }

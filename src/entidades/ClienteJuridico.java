@@ -4,27 +4,37 @@ import Enumeracao.TipoCliente;
 
 public class ClienteJuridico extends Cliente {
 	
-	private String RazaoSocial;
+	private Integer IdPessoaJuridica;
 	private Integer CNPJ;
+	private String RazaoSocial;
+
 	
-	public ClienteJuridico(Integer iD, String nome, Integer numero, TipoCliente tipo, Integer enderco) {
-		super(iD, nome, numero, tipo, enderco);
-		// TODO Auto-generated constructor stub
+	public ClienteJuridico(Integer id, Integer numero, TipoCliente tipo, Integer endereco) {
+		super(id, numero, tipo, endereco);
 	}
 
-	public ClienteJuridico(Integer iD, String nome, Integer numero, TipoCliente tipo, Integer enderco,
-			String razaoSocial, Integer cNPJ) {
-		super(iD, nome, numero, tipo, enderco);
+	public ClienteJuridico(Integer idCliente, TipoCliente tipo, Integer telefone, Integer endereco, 
+						   Integer idPessoaJuridica, String razaoSocial, Integer cnpj) {
+		super(idCliente, telefone, tipo, endereco);
+		this.setIdPessoaJuridica(idPessoaJuridica);
 		this.setRazaoSocial(razaoSocial);
-		this.setCNPJ(cNPJ);
+		this.setCNPJ(cnpj);
+	}
+	
+	public Integer getIdPessoaJuridica() {
+		return IdPessoaJuridica;
+	}
+
+	public void setIdPessoaJuridica(Integer idPessoaJuridica) {
+		IdPessoaJuridica = idPessoaJuridica;
 	}
 
 	public Integer getCNPJ() {
 		return CNPJ;
 	}
 
-	public void setCNPJ(Integer cNPJ) {
-		CNPJ = cNPJ;
+	public void setCNPJ(Integer cnpj) {
+		CNPJ = cnpj;
 	}
 
 	public String getRazaoSocial() {

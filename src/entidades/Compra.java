@@ -6,44 +6,43 @@ import Enumeracao.FormaDePagamento;
 
 public class Compra {
 	
-	private Date data;
 	private Integer ID;
-	private FormaDePagamento TipoPagamento;
-	
+	private Date Data;
+	private FormaDePagamento FormaPagamento;
+	//private Cliente Cliente;
 	
 	public Compra() {
+		
 	}
 
-	public Compra(Date data, Integer iD, FormaDePagamento tipoPagamento) {
+	public Compra( Integer id, Date data, FormaDePagamento formaPagamento) {
+		this.setID(id);
 		this.setData(data);
-		this.setID(iD);
-		this.setTipoPagamento(tipoPagamento);
+		this.setTipoPagamento(formaPagamento);
 	}
 
 	public Date getData() {
-		return data;
+		return Data;
 	}
 
 	public void setData(Date data) {
-		this.data = data;
+		Data = data;
 	}
 
 	public Integer getID() {
 		return ID;
 	}
 
-	public void setID(Integer iD) {
-		ID = iD;
+	public void setID(Integer id) {
+		ID = id;
 	}
 
-	public FormaDePagamento getTipoPagamento() {
-		return TipoPagamento;
+	public FormaDePagamento getFormaPagamento() {
+		return FormaPagamento;
 	}
 
-	public void setTipoPagamento(FormaDePagamento tipoPagamento) {
-		TipoPagamento = tipoPagamento;
+	public void setTipoPagamento(FormaDePagamento formaPagamento) {
+		FormaPagamento = formaPagamento;
 	}
 	
-	
-
 }

@@ -6,15 +6,16 @@ public class LoteMateriaPrima {
 	
 	private Integer ID;
 	private Date Data;
-	private Float Quantidade;
+	private Float QuantidadeLitros;
 	
 	public LoteMateriaPrima() {
+		
 	}
 
-	public LoteMateriaPrima(Integer iD, Date data, Float quantidade) {
-		setID(iD);
+	public LoteMateriaPrima(Integer id, Date data, Float quantidadeLitros) {
+		setID(id);
 		setData(data);
-		setQuantidade(quantidade);
+		setQuantidadeLitros(quantidadeLitros);
 	}
 
 	public Date getData() {
@@ -29,20 +30,16 @@ public class LoteMateriaPrima {
 		return ID;
 	}
 
-	public void setID(Integer iD) {
-		ID = iD;
+	public void setID(Integer id) {
+		ID = id;
 	}
 
-	public Float getQuantidade() {
-		return Quantidade;
+	public Float getQuantidadeLitros() {
+		return QuantidadeLitros;
 	}
 
-	public void setQuantidade(float quantidade) {
-		Quantidade = quantidade;
-	}
-	
-	
-	
-	
+	public void setQuantidadeLitros(float quantidadeLitros) {
+		QuantidadeLitros = quantidadeLitros;
+	}	
 
 }

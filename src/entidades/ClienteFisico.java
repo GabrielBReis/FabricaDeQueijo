@@ -4,27 +4,44 @@ import Enumeracao.TipoCliente;
 
 public class ClienteFisico extends Cliente {
 	
+	private Integer IdPessoaFisica;
 	private Integer CPF;
+	private String Nome;
 	
-	public ClienteFisico(Integer iD, String nome, Integer numero, TipoCliente tipo, Integer enderco, Integer cPF) {
-		super(iD, nome, numero, tipo, enderco);
-		this.setCPF(cPF);
+
+	public ClienteFisico(Integer id, Integer telefone, TipoCliente tipo, Integer endereco) {
+		super(id, telefone, tipo, endereco);
+	}
+	
+	public ClienteFisico(Integer id, Integer telefone, TipoCliente tipo, Integer endereco, Integer idPessoaFisica, Integer cpf, String nome) {
+		super(id, telefone, tipo, endereco);
+		this.setIdPessoaFisica(idPessoaFisica);
+		this.setCPF(cpf);
+		this.setNome(nome);
+	}
+	
+	public Integer getIdPessoaFisica() {
+		return IdPessoaFisica;
 	}
 
-
-	public ClienteFisico(Integer iD, String nome, Integer numero, TipoCliente tipo, Integer enderco) {
-		super(iD, nome, numero, tipo, enderco);
-		// TODO Auto-generated constructor stub
+	public void setIdPessoaFisica(Integer idPessoaFisica) {
+		IdPessoaFisica = idPessoaFisica;
 	}
-
 
 	public Integer getCPF() {
 		return CPF;
 	}
 
+	public void setCPF(Integer cpf) {
+		CPF = cpf;
+	}
 
-	public void setCPF(Integer cPF) {
-		CPF = cPF;
+	public String getNome() {
+		return Nome;
+	}
+
+	public void setNome(String nome) {
+		Nome = nome;
 	}
 
 }

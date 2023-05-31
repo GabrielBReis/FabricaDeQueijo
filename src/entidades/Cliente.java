@@ -5,25 +5,15 @@ import Enumeracao.TipoCliente;
 public class Cliente {
 	
 	private Integer ID;
-	private String Nome;
 	private Integer Telefone;
+	private Integer Endereco;
 	private TipoCliente Tipo;
-	private Integer Enderco;
 	
-	public Cliente(Integer iD, String nome, Integer Telefone, TipoCliente tipo, Integer enderco) {
+	public Cliente(Integer iD, Integer Telefone, TipoCliente tipo, Integer endereco) {
 		this.setID(iD);
-		this.setNome(nome);
 		this.setTelefone(Telefone);
+		this.setEndereco(endereco);
 		this.setTipo(tipo);
-		this.setEnderco(enderco);
-	}
-
-	public String getNome() {
-		return Nome;
-	}
-
-	public void setNome(String nome) {
-		Nome = nome;
 	}
 
 	public Integer getID() {
@@ -50,15 +40,12 @@ public class Cliente {
 		Tipo = tipo;
 	}
 
-	public Integer getEnderco() {
-		return Enderco;
+	public Integer getEndereco() {
+		return Endereco;
 	}
 
-	public void setEnderco(Integer enderco) {
-		Enderco = enderco;
-	}
-	
-	
-	
+	public void setEndereco(Integer endereco) {
+		Endereco = endereco;
+	}	
 
 }

@@ -7,10 +7,11 @@ public class LoteProduto {
 	private Float Quantidade;
 	
 	public LoteProduto() {
+		
 	}
 
-	public LoteProduto(Integer iD, Integer lote, Float quantidade) {
-		setID(iD);
+	public LoteProduto(Integer id, Integer lote, Float quantidade) {
+		setID(id);
 		setLote(lote);
 		setQuantidade(quantidade);
 	}
@@ -19,8 +20,8 @@ public class LoteProduto {
 		return ID;
 	}
 
-	public void setID(Integer iD) {
-		ID = iD;
+	public void setID(Integer id) {
+		ID = id;
 	}
 
 	public Integer getLote() {
