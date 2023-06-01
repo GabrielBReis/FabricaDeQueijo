@@ -9,16 +9,17 @@ public class Compra {
 	private Integer ID;
 	private Date Data;
 	private FormaDePagamento FormaPagamento;
-	//private Cliente Cliente;
+	private Integer Cliente;
 	
 	public Compra() {
 		
 	}
 
-	public Compra( Integer id, Date data, FormaDePagamento formaPagamento) {
+	public Compra( Integer id, Date data, FormaDePagamento formaPagamento, Integer cliente) {
 		this.setID(id);
 		this.setData(data);
 		this.setTipoPagamento(formaPagamento);
+		this.setCliente(cliente);
 	}
 
 	public Date getData() {
@@ -43,6 +44,14 @@ public class Compra {
 
 	public void setTipoPagamento(FormaDePagamento formaPagamento) {
 		FormaPagamento = formaPagamento;
+	}
+
+	public Integer getCliente() {
+		return Cliente;
+	}
+
+	public void setCliente(Integer cliente) {
+		Cliente = cliente;
 	}
 	
 }
