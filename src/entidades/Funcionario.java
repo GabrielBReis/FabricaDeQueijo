@@ -1,6 +1,5 @@
 package entidades;
 
-
 public class Funcionario {
 	
 	private Integer ID;
@@ -9,7 +8,6 @@ public class Funcionario {
 	private String Nome;
 	private Integer Telefone;
 	private Integer Endereco;
-	//private String Setor;
 	
 	public Funcionario() {
 		
