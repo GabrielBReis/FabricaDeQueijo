@@ -5,17 +5,19 @@ public class Venda {
 	private Integer ID;
 	private Integer QuantidadeKG;
 	private Float Valor;
-	//private Estoque Estoque;
-	//private Compra Compra;
+	private Integer Estoque;
+	private Integer Compra;
 	
 	public Venda() {
 		
 	}
 
-	public Venda(Integer iD, Integer quantidadeKg, Float valor) {
+	public Venda(Integer iD, Integer quantidadeKg, Float valor, Integer estoque, Integer compra) {
 		setID(iD);
 		setQuantidade(quantidadeKg);
 		setValor(valor);
+		setEstoque(estoque);
+		setCompra(compra);
 	}
 
 	public Integer getQuantidadeKg() {
@@ -41,6 +43,21 @@ public class Venda {
 	public void setValor(Float valor) {
 		Valor = valor;
 	}
-		
+
+	public Integer getEstoque() {
+		return Estoque;
+	}
+
+	public void setEstoque(Integer estoque) {
+		Estoque = estoque;
+	}
+
+	public Integer getCompra() {
+		return Compra;
+	}
+
+	public void setCompra(Integer compra) {
+		Compra = compra;
+	}
 
 }
