@@ -5,17 +5,18 @@ import Enumeracao.TipoCliente;
 public class ClienteJuridico extends Cliente {
 	
 	private Integer IdPessoaJuridica;
-	private Integer CNPJ;
+	private char[] CNPJ = new char[11];
 	private String RazaoSocial;
 
 	
-	public ClienteJuridico(Integer id, Integer numero, TipoCliente tipo, Integer endereco) {
-		super(id, numero, tipo, endereco);
+	public ClienteJuridico(Integer id, Integer numero, TipoCliente tipoCliente, Integer endereco) {
+		super(id, numero, tipoCliente, endereco);
 	}
 
-	public ClienteJuridico(Integer idCliente, TipoCliente tipo, Integer telefone, Integer endereco, 
-						   Integer idPessoaJuridica, String razaoSocial, Integer cnpj) {
-		super(idCliente, telefone, tipo, endereco);
+	public ClienteJuridico(Integer idCliente, TipoCliente tipoCliente, Integer telefone, Integer endereco, 
+						   Integer idPessoaJuridica, String razaoSocial, char[] cnpj) {
+		
+		super(idCliente, telefone, tipoCliente, endereco);
 		this.setIdPessoaJuridica(idPessoaJuridica);
 		this.setRazaoSocial(razaoSocial);
 		this.setCNPJ(cnpj);
@@ -29,11 +30,11 @@ public class ClienteJuridico extends Cliente {
 		IdPessoaJuridica = idPessoaJuridica;
 	}
 
-	public Integer getCNPJ() {
+	public char[] getCNPJ() {
 		return CNPJ;
 	}
 
-	public void setCNPJ(Integer cnpj) {
+	public void setCNPJ(char[] cnpj) {
 		CNPJ = cnpj;
 	}
 
