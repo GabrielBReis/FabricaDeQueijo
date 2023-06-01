@@ -7,21 +7,21 @@ public class Cliente {
 	private Integer ID;
 	private Integer Telefone;
 	private Integer Endereco;
-	private TipoCliente Tipo;
+	private TipoCliente TipoCliente;
 	
-	public Cliente(Integer iD, Integer Telefone, TipoCliente tipo, Integer endereco) {
-		this.setID(iD);
-		this.setTelefone(Telefone);
+	public Cliente(Integer id, Integer telefone, TipoCliente tipoCliente, Integer endereco) {
+		this.setID(id);
+		this.setTelefone(telefone);
 		this.setEndereco(endereco);
-		this.setTipo(tipo);
+		this.setTipo(tipoCliente);
 	}
 
 	public Integer getID() {
 		return ID;
 	}
 
-	public void setID(Integer iD) {
-		ID = iD;
+	public void setID(Integer id) {
+		ID = id;
 	}
 
 	public Integer getNumero() {
@@ -33,11 +33,11 @@ public class Cliente {
 	}
 
 	public TipoCliente getTipo() {
-		return Tipo;
+		return TipoCliente;
 	}
 
-	public void setTipo(TipoCliente tipo) {
-		Tipo = tipo;
+	public void setTipo(TipoCliente tipoCliente) {
+		TipoCliente = tipoCliente;
 	}
 
 	public Integer getEndereco() {
