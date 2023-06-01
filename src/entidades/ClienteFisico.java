@@ -5,16 +5,16 @@ import Enumeracao.TipoCliente;
 public class ClienteFisico extends Cliente {
 	
 	private Integer IdPessoaFisica;
-	private Integer CPF;
+	private char[] CPF = new char[11];
 	private String Nome;
 	
 
-	public ClienteFisico(Integer id, Integer telefone, TipoCliente tipo, Integer endereco) {
-		super(id, telefone, tipo, endereco);
+	public ClienteFisico(Integer id, Integer telefone, TipoCliente tipoCliente, Integer endereco) {
+		super(id, telefone, tipoCliente, endereco);
 	}
 	
-	public ClienteFisico(Integer id, Integer telefone, TipoCliente tipo, Integer endereco, Integer idPessoaFisica, Integer cpf, String nome) {
-		super(id, telefone, tipo, endereco);
+	public ClienteFisico(Integer id, Integer telefone, TipoCliente tipoCliente, Integer endereco, Integer idPessoaFisica, char[] cpf, String nome) {
+		super(id, telefone, tipoCliente, endereco);
 		this.setIdPessoaFisica(idPessoaFisica);
 		this.setCPF(cpf);
 		this.setNome(nome);
@@ -28,11 +28,11 @@ public class ClienteFisico extends Cliente {
 		IdPessoaFisica = idPessoaFisica;
 	}
 
-	public Integer getCPF() {
+	public char[] getCPF() {
 		return CPF;
 	}
 
-	public void setCPF(Integer cpf) {
+	public void setCPF(char[] cpf) {
 		CPF = cpf;
 	}
 
