@@ -7,17 +7,19 @@ public class Producao {
 	private Integer ID;
 	private Date Data;
 	private float QuantidadeLitros;
-	//private LoteMateriaPrima LoteMateriaPrima;
-	//private Funcionario FuncionarioResponsavel;
+	private Integer LoteMateriaPrima;
+	private Integer FuncionarioResponsavel;
 	
 	public Producao() {
 		
 	}
 
-	public Producao(Integer id, Date data, float quantidadeLitros) {
+	public Producao(Integer id, Date data, float quantidadeLitros, Integer loteMateriaPrima, Integer funcionarioResponsavel) {
 		setID(id);
 		setData(data);
 		setQuantidadeLitros(quantidadeLitros);
+		setLoteMateriaPrima(loteMateriaPrima);
+		setFuncionarioResponsavel(funcionarioResponsavel);
 	}
 
 	public Integer getID() {
@@ -44,5 +46,20 @@ public class Producao {
 		QuantidadeLitros = quantidadeLitros;
 	}
 
+	public Integer getLoteMateriaPrima() {
+		return LoteMateriaPrima;
+	}
 
+	public void setLoteMateriaPrima(Integer loteMateriaPrima) {
+		LoteMateriaPrima = loteMateriaPrima;
+	}
+
+	public Integer getFuncionarioResponsavel() {
+		return FuncionarioResponsavel;
+	}
+
+	public void setFuncionarioResponsavel(Integer funcionarioResponsavel) {
+		FuncionarioResponsavel = funcionarioResponsavel;
+	}
+	
 }
