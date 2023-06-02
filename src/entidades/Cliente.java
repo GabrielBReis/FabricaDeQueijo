@@ -9,6 +9,10 @@ public class Cliente {
 	private Integer Endereco;
 	private TipoCliente TipoCliente;
 	
+	public Cliente() {
+		
+	}
+	
 	public Cliente(Integer id, Integer telefone, TipoCliente tipoCliente, Integer endereco) {
 		this.setID(id);
 		this.setTelefone(telefone);

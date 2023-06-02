@@ -3,8 +3,8 @@ package entidades;
 public class Funcionario {
 	
 	private Integer ID;
-	private char[] CPF = new char[11];
-	private char[] NIT = new char[11];
+	private String CPF;
+	private String NIT;
 	private String Nome;
 	private Integer Telefone;
 	private Integer Endereco;
@@ -13,7 +13,7 @@ public class Funcionario {
 		
 	}
 
-	public Funcionario(Integer id, String nome, Integer telefone, Integer endereco, char[] cpf, char[] nit) {
+	public Funcionario(Integer id, String nome, Integer telefone, Integer endereco, String cpf, String nit) {
 		this.setID(id);
 		this.setNome(nome);
 		this.setTelefone(telefone);
@@ -54,19 +54,19 @@ public class Funcionario {
 		Endereco = endereco;
 	}
 
-	public char[] getCPF() {
+	public String getCPF() {
 		return CPF;
 	}
 
-	public void setCPF(char[] cpf) {
+	public void setCPF(String cpf) {
 		CPF = cpf;
 	}
 
-	public char[] getNIT() {
+	public String getNIT() {
 		return NIT;
 	}
 
-	public void setNIT(char[] nit) {
+	public void setNIT(String nit) {
 		NIT = nit;
 	}
 	

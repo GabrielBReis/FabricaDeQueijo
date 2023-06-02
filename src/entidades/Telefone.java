@@ -2,14 +2,14 @@ package entidades;
 
 public class Telefone {
 	private Integer ID;
-	private char[] DDD = new char[2];
-	private char[] Numero = new char[9];
+	private String DDD;
+	private String Numero;
 	
 	public Telefone() {
 		
 	}
 
-	public Telefone(Integer id, char[] ddd, char[] numero) {
+	public Telefone(Integer id, String ddd, String numero) {
 		ID = id;
 		DDD = ddd;
 		Numero = numero;
@@ -23,19 +23,19 @@ public class Telefone {
 		ID = id;
 	}
 
-	public char[] getDDD() {
+	public String getDDD() {
 		return DDD;
 	}
 
-	public void setDDD(char[] ddd) {
+	public void setDDD(String ddd) {
 		DDD = ddd;
 	}
 
-	public char[] getNumero() {
+	public String getNumero() {
 		return Numero;
 	}
 
-	public void setNumero(char[] numero) {
+	public void setNumero(String numero) {
 		Numero = numero;
 	}
 
