@@ -28,7 +28,7 @@ public class Cliente {
 		ID = id;
 	}
 
-	public Integer getNumero() {
+	public Integer getTelefone() {
 		return Telefone;
 	}
 

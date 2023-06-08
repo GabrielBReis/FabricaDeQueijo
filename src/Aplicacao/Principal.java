@@ -15,9 +15,11 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+
 import db.DB;
 import entidades.*;
 import Enumeracao.*;
+import Aplicacao.funcoes;
 
 public class Principal {
 	
@@ -28,14 +30,7 @@ public class Principal {
 		ResultSet resultSet = null;
 		Statement statement = null;
 		
-		System.out.println("Selecione a opção desejada: ");
-		System.out.println("1 - Realizar novo cadastro\n"
-						 + "2 - Registrar venda\n"
-						 + "3 - Registrar entrada de matéria prima\n"
-						 + "4 - Registrar testagem de matéria prima\n"
-						 + "5 - Registrar produção\n"
-						 + "6 - Atualização de estoque\n"
-						 + "7 - Sair");
+		ApresentaMenu();
 		
 		int opcao = scanner.nextInt();
 
@@ -74,6 +69,7 @@ public class Principal {
 					String numeroEndereco = scanner.next();
 					endereco.setNumero(numeroEndereco);
 					System.out.println("Logradouro: ");
+					
 					String logradouro = scanner.next();
 					endereco.setLogradouro(logradouro);
 					
@@ -116,7 +112,7 @@ public class Principal {
 						}	
 						
 						PreparedStatement inserirCliente = conexaoBanco.prepareStatement("insert into clientes (id_tel, id_end) values (?, ?)", Statement.RETURN_GENERATED_KEYS);
-						inserirCliente.setInt(1, cliente.getNumero());
+						inserirCliente.setInt(1, cliente.getTelefone());
 						inserirCliente.setInt(2, cliente.getEndereco());
 						int clientesAcrescentados = inserirCliente.executeUpdate();
 
@@ -150,7 +146,7 @@ public class Principal {
 					System.out.println("Cliente cadastrado!");
 					System.out.println("Nome: " + cliente.getNome());
 					System.out.println("CPF: " + cliente.getCPF());
-					System.out.println("Telefone: " + cliente.getNumero());
+					System.out.println("Telefone: " + cliente.getTelefone());
 					System.out.println("Endereco: " + cliente.getEndereco());
 					
 					
@@ -190,6 +186,10 @@ public class Principal {
 			default:
 				break;
 		}
+	}
+	
+	
+	private static void ApresentaMenu() {
 	}
 
 }
