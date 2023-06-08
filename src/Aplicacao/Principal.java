@@ -190,6 +190,8 @@ public class Principal {
 			default:
 				break;
 		}
+		
+		scanner.close();
 	}
 
 }
