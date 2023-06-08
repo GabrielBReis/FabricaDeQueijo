@@ -1,7 +1,6 @@
 package Aplicacao;
 
 import java.util.Scanner;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,12 +8,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
-
 import db.DB;
 import entidades.*;
 import Enumeracao.*;
 import ImplementacaoDAO.ClienteDaoJDBC;
+import ImplementacaoDAO.ClienteFisicoDaoJDBC;
+import ImplementacaoDAO.DaoFactory;
+import ImplementacaoDAO.EnderecoDaoJDBC;
+import ImplementacaoDAO.TelefoneDaoJDBC;
 import Aplicacao.funcoes;
 
 public class LpPrincipal{
@@ -24,11 +25,8 @@ public class LpPrincipal{
 		ResultSet resultSet = null;
 		Statement statement = null;
 		funcoes func = new funcoes();
-		
 		func.ApresentaMenu();
-		
 		int opcao = scanner.nextInt();
-
 		switch (opcao) {
 		
 			case 1:
@@ -38,6 +36,11 @@ public class LpPrincipal{
 				if(opcaoCadastro == 1) {
 					ClienteFisico cliente = new ClienteFisico();					
 					cliente.setTipo(TipoCliente.FISICA);
+
+                    TelefoneDaoJDBC TelefoneDao = (TelefoneDaoJDBC) DaoFactory.createTelefoneDao();
+                    ClienteDaoJDBC ClienteDao = (ClienteDaoJDBC) DaoFactory.createClienteDao();
+                    ClienteFisicoDaoJDBC ClienteFisicoDao = (ClienteFisicoDaoJDBC) DaoFactory.createClienteFisicoDao();
+                    EnderecoDaoJDBC EnderecoDao = (EnderecoDaoJDBC) DaoFactory.createEnderecoDao();
 					
 					System.out.println("Digite o CPF (apenas números):");
 					String cpf = scanner.next();
@@ -64,7 +67,10 @@ public class LpPrincipal{
 					String logradouro = scanner.next();
 					endereco.setLogradouro(logradouro);
 
-                    ClienteDaoJDBC clienteJdbc = new ClienteDaoJDBC(conexaoBanco);
+                    TelefoneDao.insert(telefone, cliente);
+                    EnderecoDao.insert(endereco, cliente);
+                    ClienteFisicoDao.insert(cliente);
+                    ClienteFisicoDao.insert(cliente);
 					
 					
 					System.out.println("Cliente cadastrado!");

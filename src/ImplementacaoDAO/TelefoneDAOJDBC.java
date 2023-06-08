@@ -19,11 +19,11 @@ import dao.TelefoneDao;
 import entidades.Cliente;
 import entidades.Telefone;
 
-public class TelefoneDAOJDBC implements TelefoneDao{
+public class TelefoneDaoJDBC implements TelefoneDao{
 
     private Connection conexaoBanco;
 	
-	public TelefoneDAOJDBC(Connection conn) {
+	public TelefoneDaoJDBC(Connection conn) {
 		this.conexaoBanco = conn;
 	}
 
