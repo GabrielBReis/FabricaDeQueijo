@@ -29,19 +29,16 @@ public class Principal {
 		Connection conexaoBanco = null;		
 		ResultSet resultSet = null;
 		Statement statement = null;
+		funcoes func = new funcoes();
 		
-		ApresentaMenu();
+		func.ApresentaMenu();
 		
 		int opcao = scanner.nextInt();
 
 		switch (opcao) {
 		
 			case 1:
-				System.out.println("Selecione o tipo de cadastro desejado:\n" 
-									+ "1 - Cliente a partir do CPF\n"
-									+ "2 - Cliente a partir do CNPJ\n"
-									+ "3 - Funcionário");
-				
+				func.CadastroCliente();
 				int opcaoCadastro = scanner.nextInt();
 				
 				if(opcaoCadastro == 1) {
@@ -89,9 +86,7 @@ public class Principal {
 								int idTelefone = chavesGeradasTelefone.getInt(1);
 								cliente.setTelefone(idTelefone);
 							}
-						}
-						
-						else {
+						}else {
 							System.out.println("Nenhum telefone acrescentado!");
 						}	
 						
