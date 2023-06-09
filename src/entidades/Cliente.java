@@ -6,7 +6,7 @@ public class Cliente {
 	
 	private Integer ID;
 	private Integer Telefone;
-	private Integer Endereco;
+	private Endereco Endereco;
 	private TipoCliente TipoCliente;
 	
 	public Cliente() {
@@ -16,7 +16,6 @@ public class Cliente {
 	public Cliente(Integer id, Integer telefone, TipoCliente tipoCliente, Integer endereco) {
 		this.setID(id);
 		this.setTelefone(telefone);
-		this.setEndereco(endereco);
 		this.setTipo(tipoCliente);
 	}
 
@@ -44,12 +43,12 @@ public class Cliente {
 		TipoCliente = tipoCliente;
 	}
 
-	public Integer getEndereco() {
+	public Endereco getEndereco() {
 		return Endereco;
 	}
 
-	public void setEndereco(Integer endereco) {
-		Endereco = endereco;
-	}	
+	public void setEndereco(Endereco Endereco) {
+		Endereco = Endereco;
+	}
 
 }

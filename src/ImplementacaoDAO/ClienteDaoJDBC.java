@@ -9,145 +9,125 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dao.ClienteDao;
-// import dao.DepartamentoDao;
 import db.DB;
 import db.DbException;
-// import db.DbIntegrityException;
-// import entidades.Departamento;
 import entidades.Cliente;
 
-public class ClienteDaoJDBC implements ClienteDao{
-    
-	private Connection conexaoBanco;
-	
-	public ClienteDaoJDBC(Connection conn) {
-		this.conexaoBanco = conn;
-	}
-	
-	@Override
-	public void insert(Cliente cliente) {
-		PreparedStatement inserirCliente = null;
-        try{
-            inserirCliente = conexaoBanco.prepareStatement("insert into clientes (id_tel, id_end) values (?, ?)", Statement.RETURN_GENERATED_KEYS);
-			inserirCliente.setInt(1, cliente.getTelefone());
-			inserirCliente.setInt(2, cliente.getEndereco());
-			int clientesAcrescentados = inserirCliente.executeUpdate();
+public class ClienteDaoJDBC implements ClienteDao {
 
-			if (clientesAcrescentados > 0) {
-				ResultSet chavesGeradasCliente = inserirCliente.getGeneratedKeys();   
-				while (chavesGeradasCliente.next()) {
-					int idCliente = chavesGeradasCliente.getInt(1);
-					cliente.setID(idCliente);
-				}
-			}
-			
-			else {
-				System.out.println("Nenhum endereço acrescentado!");
-			}	
-        }catch (SQLException e) {
-			throw new DbException(e.getMessage());
-		}
-		finally {
-			DB.closeStatement(inserirCliente);
-		} 
-	}
+    private Connection conexaoBanco;
 
-	@Override
-	public void update(Cliente cliente) {
-		// PreparedStatement st = null;
-		// try {
-		// 	st = conn.prepareStatement("UPDATE cliente SET Telefone = ? WHERE Id = ? "); 
-		// 	st.setInt(1, cliente.getTelefone());
-		// 	st.setInt(2, cliente.getID());
-		// 	st.executeUpdate();
-		// }
-		// catch (SQLException e) {
-		// 	throw new DbException(e.getMessage());
-		// }
-		// finally {
-		// 	DB.closeStatement(st);
-		// }	
-	}
+    public ClienteDaoJDBC(Connection conn) {
+        this.conexaoBanco = conn;
+    }
 
-	@Override
-	public void deleteById(Integer id) throws Exception {
-		// PreparedStatement st = null;
-		// try {
-		// 	st = conn.prepareStatement("DELETE FROM cliente WHERE id = ?"); 
-		// 	st.setInt(1, id);
-		// 	int linhasAfetadas = st.executeUpdate();
-		// 	if (linhasAfetadas == 0) {
-		// 		throw new DbException("Nenhuma exclusão ocorreu! Id inexistente");
-		// 	}
-		// }
-		// catch (SQLException e) {
-		// 	throw new Exception(e.getMessage());  //Não podem ser deletados departamentos que tenham vendedores
-		// }
-		// finally {
-		// 	DB.closeStatement(st);
-		// }
-	}
+    @Override
+    public void insert(Cliente cliente) {
+        PreparedStatement inserirCliente = null;
+        try {
+            inserirCliente = conexaoBanco.prepareStatement("INSERT INTO clientes (id_tel, id_end) VALUES (?, ?)",
+                    Statement.RETURN_GENERATED_KEYS);
+            inserirCliente.setInt(1, cliente.getTelefone());
+            inserirCliente.setString(2, cliente.getEndereco());
+            int clientesAcrescentados = inserirCliente.executeUpdate();
 
-	@Override
-	public Cliente findById(Integer id) {
-		return null;
-		// PreparedStatement st = null;
-		// ResultSet rs = null;
-		// try {
-		// 	st = conn.prepareStatement("SELECT cliente.* FROM departamento "
-		// 			+ " WHERE cliente.Id = ?");
-		// 	st.setInt(1,id);
-		// 	rs = st.executeQuery();
-		// 	if (rs.next()) {
-		// 		Cliente departamento = instanciaDepartamento(rs);
-		// 		return departamento;
-		// 	}
-		// } 
-		// catch (SQLException e){
-		// 	throw new DbException(e.getMessage());
-		// }
-		// finally {
-		// 	DB.closeStatement(st);
-		// 	DB.closeResultSet(rs);
-		// }
-		// return null;
-	}
+            if (clientesAcrescentados > 0) {
+                ResultSet chavesGeradasCliente = inserirCliente.getGeneratedKeys();
+                if (chavesGeradasCliente.next()) {
+                    int idCliente = chavesGeradasCliente.getInt(1);
+                    cliente.setID(idCliente);
+                }
+                DB.closeResultSet(chavesGeradasCliente);
+            } else {
+                System.out.println("Nenhum endereço acrescentado!");
+            }
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(inserirCliente);
+        }
+    }
 
-	@Override
-	public List<Cliente> findAll() {
-		return null;
-		// PreparedStatement st = null;
-		// ResultSet rs = null;
-		// try {
-		// 	st = conn.prepareStatement(
-		// 			"SELECT departamento.* FROM departamento ORDER BY Nome");
-			
-		// 	rs = st.executeQuery();
-			
-		// 	// criar uma lista para colocar todos os vendedores de um departamento
-		// 	List <Cliente> lista = new ArrayList<>();
-			
-		// 	while (rs.next()) {
-		// 		Cliente departamento = instanciaDepartamento(rs);
-		// 		lista.add(departamento);
-		// 	}
-		// 	return lista;
-		// } 
-		// catch (SQLException e){
-		// 	throw new DbException(e.getMessage());
-		// }
-		// finally {
-		// 	DB.closeStatement(st);
-		// 	DB.closeResultSet(rs);
-		// }
-	}
+    @Override
+    public void update(Cliente cliente) {
+        PreparedStatement atualizarCliente = null;
+        try {
+            atualizarCliente = conexaoBanco.prepareStatement("UPDATE clientes SET id_tel = ?, id_end = ? WHERE id_cliente = ?");
+            atualizarCliente.setInt(1, cliente.getTelefone());
+            atualizarCliente.setString(2, cliente.getEndereco());
+            atualizarCliente.setInt(3, cliente.getID());
+            atualizarCliente.executeUpdate();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(atualizarCliente);
+        }
+    }
 
-	public Cliente instanciaDepartamento(ResultSet cliente) throws SQLException {
-		// Cliente cliente = new Cliente();
-		// cliente.setID(rs.getInt("ID"));
-		// cliente.setTelefone(rs.getInt("Telefone"));
-		return (Cliente) cliente;
-	}
+    @Override
+    public void deleteById(Integer id) throws Exception {
+        PreparedStatement deletarCliente = null;
+        try {
+            deletarCliente = conexaoBanco.prepareStatement("DELETE FROM clientes WHERE id_cliente = ?");
+            deletarCliente.setInt(1, id);
+            deletarCliente.executeUpdate();
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeStatement(deletarCliente);
+        }
+    }
 
-    
+    @Override
+    public Cliente findById(Integer id) {
+        PreparedStatement encontrarCliente = null;
+        ResultSet resultado = null;
+        try {
+            encontrarCliente = conexaoBanco.prepareStatement("SELECT * FROM clientes WHERE id_cliente = ?");
+            encontrarCliente.setInt(1, id);
+            resultado = encontrarCliente.executeQuery();
+
+            if (resultado.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setID(resultado.getInt("id_cliente"));
+                cliente.setTelefone(resultado.getInt("id_tel"));
+                cliente.setEndereco(resultado.getString("id_end"));
+                return cliente;
+            }
+
+            return null;
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeResultSet(resultado);
+            DB.closeStatement(encontrarCliente);
+        }
+    }
+
+    @Override
+    public List<Cliente> findAll() {
+        PreparedStatement encontrarClientes = null;
+        ResultSet resultado = null;
+        try {
+            encontrarClientes = conexaoBanco.prepareStatement("SELECT * FROM clientes");
+            resultado = encontrarClientes.executeQuery();
+
+            List<Cliente> clientes = new ArrayList<>();
+
+            while (resultado.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setID(resultado.getInt("id_cliente"));
+                cliente.setTelefone(resultado.getInt("id_tel"));
+                cliente.setEndereco(resultado.getString("id_end"));
+                clientes.add(cliente);
+            }
+
+            return clientes;
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        } finally {
+            DB.closeResultSet(resultado);
+            DB.closeStatement(encontrarClientes);
+        }
+    }
 }

@@ -1,5 +1,9 @@
 package Aplicacao;
 
+import java.util.Scanner;
+
+import entidades.Telefone;
+
 public class funcoes {
 
     public void ApresentaMenu(){
@@ -20,6 +24,18 @@ public class funcoes {
 									+ "2 - Cliente a partir do CNPJ\n"
 									+ "3 - Funcionário");
 				
+	}
+
+	public Telefone cadastroTelefone(){
+		Scanner scanner = new Scanner(System.in);
+		Telefone telefone = new Telefone();
+		System.out.println("Digite o ddd: ");
+		String ddd = scanner.next();
+		telefone.setDDD(ddd);
+		System.out.println("Digite o telefone: ");
+		String numeroTelefone = scanner.next();
+		telefone.setNumero(numeroTelefone);
+		return telefone;
 	}
     
 }

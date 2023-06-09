@@ -21,14 +21,13 @@ import Aplicacao.funcoes;
 public class LpPrincipal{
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-		Connection conexaoBanco = null;		
-		ResultSet resultSet = null;
-		Statement statement = null;
+		// Connection conexaoBanco = null;		
+		// ResultSet resultSet = null;
+		// Statement statement = null;
 		funcoes func = new funcoes();
 		func.ApresentaMenu();
 		int opcao = scanner.nextInt();
 		switch (opcao) {
-		
 			case 1:
 				func.CadastroCliente();
 				int opcaoCadastro = scanner.nextInt();
@@ -36,12 +35,6 @@ public class LpPrincipal{
 				if(opcaoCadastro == 1) {
 					ClienteFisico cliente = new ClienteFisico();					
 					cliente.setTipo(TipoCliente.FISICA);
-
-                    TelefoneDaoJDBC TelefoneDao = (TelefoneDaoJDBC) DaoFactory.createTelefoneDao();
-                    ClienteDaoJDBC ClienteDao = (ClienteDaoJDBC) DaoFactory.createClienteDao();
-                    ClienteFisicoDaoJDBC ClienteFisicoDao = (ClienteFisicoDaoJDBC) DaoFactory.createClienteFisicoDao();
-                    EnderecoDaoJDBC EnderecoDao = (EnderecoDaoJDBC) DaoFactory.createEnderecoDao();
-					
 					System.out.println("Digite o CPF (apenas números):");
 					String cpf = scanner.next();
 					cliente.setCPF(cpf);
@@ -66,6 +59,11 @@ public class LpPrincipal{
 					
 					String logradouro = scanner.next();
 					endereco.setLogradouro(logradouro);
+
+                    TelefoneDaoJDBC TelefoneDao = (TelefoneDaoJDBC) DaoFactory.createTelefoneDao();
+                    ClienteDaoJDBC ClienteDao = (ClienteDaoJDBC) DaoFactory.createClienteDao();
+                    ClienteFisicoDaoJDBC ClienteFisicoDao = (ClienteFisicoDaoJDBC) DaoFactory.createClienteFisicoDao();
+                    EnderecoDaoJDBC EnderecoDao = (EnderecoDaoJDBC) DaoFactory.createEnderecoDao();
 
                     TelefoneDao.insert(telefone, cliente);
                     EnderecoDao.insert(endereco, cliente);
@@ -94,21 +92,27 @@ public class LpPrincipal{
 							+ "3 - Funcionário");
 					opcaoCadastro = scanner.nextInt();					
 				}
+                break;
 			
 			case 2:
 				Venda venda = new Venda();
+                break;
 				
 			case 3:
 				LoteMateriaPrima loteMateriaPrima = new LoteMateriaPrima();
+                break;
 				
 			case 4:
 				Resultado resultado = new Resultado();
+                break;
 			
 			case 5:
 				Producao producao = new Producao();
+                break;
 			
 			case 6:
 				Estoque estoque = new Estoque();
+                break;
 			
 			case 7:
 				break;
