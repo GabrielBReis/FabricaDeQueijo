@@ -16,7 +16,6 @@ public class Cliente {
 	public Cliente(Integer id, Integer telefone, TipoCliente tipoCliente, Integer endereco) {
 		this.setID(id);
 		this.setTelefone(telefone);
-		this.setEndereco(endereco);
 		this.setTipo(tipoCliente);
 	}
 
@@ -28,7 +27,7 @@ public class Cliente {
 		ID = id;
 	}
 
-	public Integer getNumero() {
+	public Integer getTelefone() {
 		return Telefone;
 	}
 
@@ -50,6 +49,6 @@ public class Cliente {
 
 	public void setEndereco(Integer endereco) {
 		Endereco = endereco;
-	}	
+	}
 
 }

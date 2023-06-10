@@ -15,9 +15,11 @@ import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+
 import db.DB;
 import entidades.*;
 import Enumeracao.*;
+import Aplicacao.funcoes;
 
 public class Principal {
 	
@@ -27,26 +29,16 @@ public class Principal {
 		Connection conexaoBanco = null;		
 		ResultSet resultSet = null;
 		Statement statement = null;
+		funcoes func = new funcoes();
 		
-		System.out.println("Selecione a opção desejada: ");
-		System.out.println("1 - Realizar novo cadastro\n"
-						 + "2 - Registrar venda\n"
-						 + "3 - Registrar entrada de matéria prima\n"
-						 + "4 - Registrar testagem de matéria prima\n"
-						 + "5 - Registrar produção\n"
-						 + "6 - Atualização de estoque\n"
-						 + "7 - Sair");
+		func.ApresentaMenuPrincipal();
 		
 		int opcao = scanner.nextInt();
 
 		switch (opcao) {
 		
 			case 1:
-				System.out.println("Selecione o tipo de cadastro desejado:\n" 
-									+ "1 - Cliente a partir do CPF\n"
-									+ "2 - Cliente a partir do CNPJ\n"
-									+ "3 - Funcionário");
-				
+				func.menuCadastroCliente();
 				int opcaoCadastro = scanner.nextInt();
 				
 				if(opcaoCadastro == 1) {
@@ -74,6 +66,7 @@ public class Principal {
 					String numeroEndereco = scanner.next();
 					endereco.setNumero(numeroEndereco);
 					System.out.println("Logradouro: ");
+					
 					String logradouro = scanner.next();
 					endereco.setLogradouro(logradouro);
 					
@@ -93,9 +86,7 @@ public class Principal {
 								int idTelefone = chavesGeradasTelefone.getInt(1);
 								cliente.setTelefone(idTelefone);
 							}
-						}
-						
-						else {
+						}else {
 							System.out.println("Nenhum telefone acrescentado!");
 						}	
 						
@@ -116,7 +107,7 @@ public class Principal {
 						}	
 						
 						PreparedStatement inserirCliente = conexaoBanco.prepareStatement("insert into clientes (id_tel, id_end) values (?, ?)", Statement.RETURN_GENERATED_KEYS);
-						inserirCliente.setInt(1, cliente.getNumero());
+						inserirCliente.setInt(1, cliente.getTelefone());
 						inserirCliente.setInt(2, cliente.getEndereco());
 						int clientesAcrescentados = inserirCliente.executeUpdate();
 
@@ -150,7 +141,7 @@ public class Principal {
 					System.out.println("Cliente cadastrado!");
 					System.out.println("Nome: " + cliente.getNome());
 					System.out.println("CPF: " + cliente.getCPF());
-					System.out.println("Telefone: " + cliente.getNumero());
+					System.out.println("Telefone: " + cliente.getTelefone());
 					System.out.println("Endereco: " + cliente.getEndereco());
 					
 					
@@ -190,8 +181,10 @@ public class Principal {
 			default:
 				break;
 		}
-		
-		scanner.close();
+	}
+	
+	
+	private static void ApresentaMenu() {
 	}
 
 }
