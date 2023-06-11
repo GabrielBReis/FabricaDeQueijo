@@ -1,11 +1,7 @@
 package ImplementacaoDAO;
 
-import dao.ClienteDao;
-import dao.ClienteFisicoDao;
-import dao.EnderecoDao;
-import dao.TelefoneDao;
+import dao.*;
 import db.DB;
-
 
 public class DaoFactory {
 
@@ -15,6 +11,10 @@ public class DaoFactory {
 	
 	public static ClienteFisicoDao createClienteFisicoDao() {
 		return new ClienteFisicoDaoJDBC(DB.getConnection());
+	}
+
+	public static ClienteJuridicoDao createClienteJuridicoDao() {
+		return new ClienteJuridicoDaoJDBC(DB.getConnection());
 	}
 
     public static EnderecoDao createEnderecoDao() {

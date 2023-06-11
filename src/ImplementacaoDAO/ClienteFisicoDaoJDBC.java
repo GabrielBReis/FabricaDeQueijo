@@ -7,16 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
-
-import dao.ClienteDao;
 import db.DB;
 import db.DbException;
-
-import dao.EnderecoDao;
-import entidades.Endereco;
 import entidades.Cliente;
-
 import dao.ClienteFisicoDao;
 import entidades.ClienteFisico;
 
