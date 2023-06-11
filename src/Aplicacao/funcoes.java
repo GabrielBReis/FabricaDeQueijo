@@ -1,12 +1,9 @@
 package Aplicacao;
 
 import java.util.Scanner;
-
-import Enumeracao.TipoCliente;
-import entidades.ClienteFisico;
-import entidades.ClienteJuridico;
-import entidades.Endereco;
-import entidades.Telefone;
+import Enumeracao.*;
+import ImplementacaoDAO.*;
+import entidades.*;
 
 public class funcoes {
 
@@ -122,6 +119,76 @@ public class funcoes {
         endereco.setLogradouro(logradouro);
 
         return endereco;
+    }
+
+    static void CadastroClienteFisico(Scanner scanner){
+        Cliente cliente = new Cliente();
+        cliente.setTipo(TipoCliente.FISICA);
+        ClienteFisico clienteFisico = funcoes.preencherClienteFisico(scanner);
+        Telefone telefone = funcoes.preencherTelefone(scanner);
+        TelefoneDAOJDBC telefoneDao = (TelefoneDAOJDBC) DaoFactory.createTelefoneDao();
+        telefoneDao.insert(telefone);
+        Endereco endereco = funcoes.preencherEndereco(scanner);
+        EnderecoDaoJDBC enderecoDao = (EnderecoDaoJDBC) DaoFactory.createEnderecoDao();
+        enderecoDao.insert(endereco);
+        cliente.setTelefone(telefone.getID());
+        cliente.setEndereco(endereco.getID());
+        ClienteDaoJDBC clienteDao = (ClienteDaoJDBC) DaoFactory.createClienteDao();
+        clienteDao.insert(cliente);
+        clienteFisico.setTelefone(cliente.getTelefone());
+        clienteFisico.setEndereco(cliente.getEndereco());
+        ClienteFisicoDaoJDBC clienteFisicoDao = (ClienteFisicoDaoJDBC) DaoFactory.createClienteFisicoDao();
+        clienteFisicoDao.insert(cliente, clienteFisico);
+        System.out.println("Cliente cadastrado!");
+        System.out.println("Nome: " + clienteFisico.getNome());
+        System.out.println("CPF: " + clienteFisico.getCPF());
+        System.out.println("Telefone: " + clienteFisico.getTelefone());
+        System.out.println("Endereco: " + clienteFisico.getEndereco());
+    }
+
+    static void CadastroClienteJuridico(Scanner scanner){
+        Cliente cliente = new Cliente();
+        cliente.setTipo(TipoCliente.JURIDICA);
+        ClienteJuridico clienteJuridico = funcoes.preencherClienteJuridico(scanner);
+        Telefone telefone = funcoes.preencherTelefone(scanner);
+        TelefoneDAOJDBC telefoneDao = (TelefoneDAOJDBC) DaoFactory.createTelefoneDao();
+        telefoneDao.insert(telefone);
+        Endereco endereco = funcoes.preencherEndereco(scanner);
+        EnderecoDaoJDBC enderecoDao = (EnderecoDaoJDBC) DaoFactory.createEnderecoDao();
+        enderecoDao.insert(endereco);
+        cliente.setTelefone(telefone.getID());
+        cliente.setEndereco(endereco.getID());
+        ClienteDaoJDBC clienteDao = (ClienteDaoJDBC) DaoFactory.createClienteDao();
+        clienteDao.insert(cliente);
+        clienteJuridico.setTelefone(cliente.getTelefone());
+        clienteJuridico.setEndereco(cliente.getEndereco());
+        ClienteJuridicoDaoJDBC clienteJuridicoDao = (ClienteJuridicoDaoJDBC) DaoFactory.createClienteJuridicoDao();
+        clienteJuridicoDao.insert(cliente, clienteJuridico);
+        System.out.println("Cliente cadastrado!");
+        System.out.println("Razão Social: " + clienteJuridico.getRazaoSocial());
+        System.out.println("CNPJ: " + clienteJuridico.getCNPJ());
+        System.out.println("Telefone: " + clienteJuridico.getTelefone());
+        System.out.println("Endereco: " + clienteJuridico.getEndereco());
+    }
+
+    public static void SwitchCadastro(int opcao, Scanner scanner) {
+        switch (opcao) {
+					case 1: // Cliente Fisico
+						funcoes.CadastroClienteFisico(scanner);
+						break;
+					case 2: // Cliente Juridico
+						funcoes.CadastroClienteJuridico(scanner);
+						break;
+
+					case 3: // Funcionario
+						break;
+
+					default:
+						System.out.println("Opção inválida");
+						funcoes.menuCadastroCliente();
+						opcao = scanner.nextInt();
+						break;
+				}
     }
     
 }

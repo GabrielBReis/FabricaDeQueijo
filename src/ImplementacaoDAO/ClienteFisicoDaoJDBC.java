@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import db.DB;
 import db.DbException;
 import entidades.Cliente;
-import dao.ClienteFisicoDao;
 import entidades.ClienteFisico;
+import dao.ClienteFisicoDao;
 
 public class ClienteFisicoDaoJDBC implements ClienteFisicoDao {
 

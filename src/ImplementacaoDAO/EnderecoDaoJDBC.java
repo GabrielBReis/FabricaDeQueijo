@@ -152,10 +152,7 @@ public class EnderecoDaoJDBC implements EnderecoDao {
 
     @Override
     public Endereco findByCliente(Cliente cliente) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'findByCliente'");
     }
-
-
-    
+  
 }

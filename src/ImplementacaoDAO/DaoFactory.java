@@ -24,4 +24,5 @@ public class DaoFactory {
 	public static TelefoneDao createTelefoneDao() {
 		return new TelefoneDAOJDBC(DB.getConnection());
 	}
+
 }
