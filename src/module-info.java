@@ -5,6 +5,6 @@
  * @author evila
  *
  */
-module FabricaDeQueijo_Gabriel {
+module FabricaDeQueijo {
 	requires java.sql;
 }

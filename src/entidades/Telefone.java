@@ -39,4 +39,8 @@ public class Telefone {
 		Numero = numero;
 	}
 
+	@Override
+	public String toString() {
+		return getDDD() + " " + getNumero();
+	}
 }

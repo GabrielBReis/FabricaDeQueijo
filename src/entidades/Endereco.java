@@ -39,6 +39,9 @@ public class Endereco {
 		Logradouro = logradouro;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return getLogradouro() + " nº" + getNumero();
+	}
 
 }

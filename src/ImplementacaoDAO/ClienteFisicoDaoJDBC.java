@@ -100,7 +100,7 @@ public class ClienteFisicoDaoJDBC implements ClienteFisicoDao {
 
             if (resultado.next()) {
                 ClienteFisico cliente = new ClienteFisico();
-                cliente.setID(resultado.getInt("id_cliente"));
+                cliente.setID(resultado.getInt("id_pf"));
                 cliente.setNome(resultado.getString("nome"));
                 cliente.setCPF(resultado.getString("cpf"));
 

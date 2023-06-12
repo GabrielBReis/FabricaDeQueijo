@@ -46,5 +46,11 @@ public class ClienteFisico extends Cliente {
 	public void setNome(String nome) {
 		Nome = nome;
 	}
+	
+	@Override
+	public String toString() {
+		return "Nome: " + getNome() + 
+				"\nCPF: " + getCPF();
+	}
 
 }

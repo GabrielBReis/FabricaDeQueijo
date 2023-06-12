@@ -26,9 +26,11 @@ public class ClienteJuridicoDaoJDBC implements ClienteJuridicoDao {
     public void insert(Cliente cliente, ClienteJuridico clienteJuridico) {
         PreparedStatement inserirClienteJuridico = null;       
         try{
-            inserirClienteJuridico = conexaoClienteJuridico.prepareStatement("INSERT INTO pessoa_juridico () VALUES (?, ?, ?)", 
+            inserirClienteJuridico = conexaoClienteJuridico.prepareStatement("INSERT INTO pessoa_juridica (razao_social, cnpj, id_cliente) VALUES (?, ?, ?)", 
             															Statement.RETURN_GENERATED_KEYS);
-           
+            inserirClienteJuridico.setString(1, clienteJuridico.getRazaoSocial());
+            inserirClienteJuridico.setString(2, clienteJuridico.getCNPJ());
+            inserirClienteJuridico.setInt(3, cliente.getID());
             int clientesFisicosAcrescentados = inserirClienteJuridico.executeUpdate();
 
             if (clientesFisicosAcrescentados > 0) {
